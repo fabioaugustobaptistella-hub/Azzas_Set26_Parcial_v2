@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IUNGO Concierge · Resumo Executivo - Grupo Azzas | Set/26</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #fafaf9; --surface: #ffffff; --fg: #1a1a19; --muted: #78716c;
+    --border: #e7e5e4; --accent: #059669; --accent-light: #d1fae5; --accent-dark: #047857;
+    --warn: #d97706; --purple: #7c3aed; --purple-light: #ede9fe;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.5; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 32px 24px 60px; }
+
+  /* HEADER */
+  .header { margin-bottom: 32px; }
+  .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 6px; }
+  .header h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+  .header .badge { background: var(--accent-light); color: var(--accent-dark); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+  .header .subtitle { color: var(--muted); font-size: 13px; }
+  .header .meta { display: flex; gap: 14px; margin-top: 10px; font-size: 11px; color: var(--muted); }
+
+  /* KPIs */
+  .kpi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 28px; }
+  .kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .kpi-card .kpi-label { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .kpi-card .kpi-value { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .kpi-card .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .kpi-card.highlight { background: linear-gradient(135deg, #059669, #047857); border: none; }
+  .kpi-card.highlight .kpi-label, .kpi-card.highlight .kpi-sub { color: rgba(255,255,255,0.85); }
+  .kpi-card.highlight .kpi-value { color: white; }
+
+  /* SECTIONS */
+  .section { margin-bottom: 32px; }
+  .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .section-header h2 { font-size: 16px; font-weight: 700; }
+  .section-header .section-sub { font-size: 11px; color: var(--muted); }
+
+  /* SHARE CHART */
+  .share-chart { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .share-row { display: grid; grid-template-columns: 120px 1fr 60px; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .share-row:last-child { margin-bottom: 0; }
+  .share-label { font-size: 12px; font-weight: 600; }
+  .share-bar-bg { height: 26px; background: #f5f5f4; border-radius: 6px; overflow: hidden; }
+  .share-bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 8px; color: white; font-size: 11px; font-weight: 700; background: linear-gradient(90deg, #059669, #10b981); }
+  .share-value { font-size: 12px; font-weight: 700; text-align: right; color: var(--accent-dark); }
+
+  /* BRAND CARDS */
+  .brand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .brand-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+  .brand-card.winner { border-color: var(--accent); }
+  .brand-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .brand-name { font-size: 14px; font-weight: 700; }
+  .brand-position { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: var(--accent-light); color: var(--accent-dark); }
+  .brand-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed var(--border); }
+  .brand-stat .stat-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .brand-stat .stat-value { font-size: 13px; font-weight: 700; margin-top: 1px; }
+  .top-list { display: flex; flex-direction: column; gap: 5px; }
+  .top-item { display: grid; grid-template-columns: 16px 1fr auto; align-items: center; gap: 6px; font-size: 11px; }
+  .top-item .rank { color: var(--muted); font-weight: 600; font-size: 10px; }
+  .top-item .platform { font-weight: 500; }
+  .top-item .value { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .top-item.iungo { background: var(--accent-light); padding: 4px 6px; border-radius: 5px; margin: 0 -6px; }
+  .top-item.iungo .platform { color: var(--accent-dark); font-weight: 700; }
+  .top-item.iungo .value { color: var(--accent-dark); }
+  .top-item.naodef { background: var(--purple-light); padding: 4px 6px; border-radius: 5px; margin: 0 -6px; }
+  .top-item.naodef .platform { color: var(--purple); font-weight: 700; }
+
+  /* INSIGHTS */
+  .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .insight-box { border-radius: 10px; padding: 14px 16px; }
+  .insight-box.good { background: var(--accent-light); border-left: 4px solid var(--accent); }
+  .insight-box.warn { background: #fef3c7; border-left: 4px solid var(--warn); }
+  .insight-box .insight-title { font-size: 12px; font-weight: 700; margin-bottom: 6px; }
+  .insight-box.good .insight-title { color: var(--accent-dark); }
+  .insight-box.warn .insight-title { color: #92400e; }
+  .insight-box p { font-size: 12px; line-height: 1.6; }
+  .insight-box.good p { color: #064e3b; }
+  .insight-box.warn p { color: #78350f; }
+  .insight-box strong { font-weight: 700; }
+
+  /* TABLE */
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  thead { background: #fafaf9; }
+  th { text-align: left; padding: 10px 14px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  tr.total-row { background: #fafaf9; font-weight: 700; }
+
+  .footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); text-align: center; }
+
+  @media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .brand-grid { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .share-row { grid-template-columns: 90px 1fr 50px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <h1>IUNGO Concierge · Grupo Azzas 2154</h1>
+        <p class="subtitle">Resumo Executivo — Setembro/2026 (01 a 24/09)</p>
+      </div>
+      <span class="badge">v3.0</span>
+    </div>
+    <div class="meta">
+      <span>📅 01–24/09/2026</span>
+      <span>🏷️ 6 marcas</span>
+      <span>📊 GA4 + IUNGO v1.7</span>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-card highlight">
+      <div class="kpi-label">Faturamento IUNGO</div>
+      <div class="kpi-value">R$ 861.898</div>
+      <div class="kpi-sub">Share geral 1,19%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">GMV Total</div>
+      <div class="kpi-value">R$ 72,67M</div>
+      <div class="kpi-sub">6 marcas</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Maior Marca</div>
+      <div class="kpi-value">FARM</div>
+      <div class="kpi-sub">55,6% do GMV</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Melhor Share</div>
+      <div class="kpi-value">MARIA FILÓ</div>
+      <div class="kpi-sub">2,45% · 9º lugar</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Comissão (2,5%)</div>
+      <div class="kpi-value">R$ 21.547</div>
+      <div class="kpi-sub">receita recorrente</div>
+    </div>
+  </div>
+
+  <!-- SHARE CHART -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📊 Share IUNGO por Marca</h2>
+      <span class="section-sub">% do faturamento da marca</span>
+    </div>
+    <div class="share-chart">
+      <div class="share-row"><div class="share-label">MARIA FILÓ ⭐</div><div class="share-bar-bg"><div class="share-bar-fill" style="width:100%;">2,45%</div></div><div class="share-value">2,45%</div></div>
+      <div class="share-row"><div class="share-label">OFF PREMIUM</div><div class="share-bar-bg"><div class="share-bar-fill" style="width:55.5%;">1,36%</div></div><div class="share-value">1,36%</div></div>
+      <div class="share-row"><div class="share-label">ANIMALE</div><div class="share-bar-bg"><div class="share-bar-fill" style="width:52.6%;">1,29%</div></div><div class="share-value">1,29%</div></div>
+      <div class="share-row"><div class="share-label">FÁBULA</div><div class="share-bar-bg"><div class="share-bar-fill" style="width:42.4%;">1,04%</div></div><div class="share-value">1,04%</div></div>
+      <div class="share-row"><div class="share-label">FARM</div><div class="share-bar-bg"><div class="share-bar-fill" style="width:41.6%;">1,02%</div></div><div class="share-value">1,02%</div></div>
+      <div class="share-row"><div class="share-label">CRIS BARROS</div><div class="share-bar-bg"><div class="share-bar-fill" style="width:39.6%;">0,97%</div></div><div class="share-value">0,97%</div></div>
+    </div>
+  </div>
+
+  <!-- BRAND CARDS -->
+  <div class="section">
+    <div class="section-header">
+      <h2>🏷️ Ranking por Marca</h2>
+      <span class="section-sub">Top 5 + IUNGO · "Não Def. (GA4)" = (direct)+(not set)</span>
+    </div>
+    <div class="brand-grid">
+
+      <div class="brand-card">
+        <div class="brand-card-header"><div class="brand-name">FARM</div><span class="brand-position">IUNGO 12º</span></div>
+        <div class="brand-stats">
+          <div class="brand-stat"><div class="stat-label">GMV</div><div class="stat-value">R$ 40,4M</div></div>
+          <div class="brand-stat"><div class="stat-label">IUNGO</div><div class="stat-value">R$ 414k</div></div>
+          <div class="brand-stat"><div class="stat-label">Share</div><div class="stat-value">1,02%</div></div>
+        </div>
+        <div class="top-list">
+          <div class="top-item"><span class="rank">1</span><span class="platform">Google</span><span class="value">R$ 9,52M</span></div>
+          <div class="top-item naodef"><span class="rank">2</span><span class="platform">🔵 Não Def.</span><span class="value">R$ 8,97M</span></div>
+          <div class="top-item"><span class="rank">3</span><span class="platform">Facebook</span><span class="value">R$ 8,77M</span></div>
+          <div class="top-item"><span class="rank">4</span><span class="platform">Insider</span><span class="value">R$ 3,75M</span></div>
+          <div class="top-item"><span class="rank">5</span><span class="platform">Maislojinha</span><span class="value">R$ 2,24M</span></div>
+          <div class="top-item iungo"><span class="rank">12</span><span class="platform"> IUNGO</span><span class="value">R$ 414k</span></div>
+        </div>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-header"><div class="brand-name">ANIMALE</div><span class="brand-position">IUNGO 6º</span></div>
+        <div class="brand-stats">
+          <div class="brand-stat"><div class="stat-label">GMV</div><div class="stat-value">R$ 10,3M</div></div>
+          <div class="brand-stat"><div class="stat-label">IUNGO</div><div class="stat-value">R$ 133k</div></div>
+          <div class="brand-stat"><div class="stat-label">Share</div><div class="stat-value">1,29%</div></div>
+        </div>
+        <div class="top-list">
+          <div class="top-item"><span class="rank">1</span><span class="platform">Google</span><span class="value">R$ 1,23M</span></div>
+          <div class="top-item"><span class="rank">2</span><span class="platform">Facebook</span><span class="value">R$ 889k</span></div>
+          <div class="top-item"><span class="rank">3</span><span class="platform">Insider</span><span class="value">R$ 888k</span></div>
+          <div class="top-item naodef"><span class="rank">4</span><span class="platform">🔵 Não Def.</span><span class="value">R$ 750k</span></div>
+          <div class="top-item"><span class="rank">5</span><span class="platform">Dito</span><span class="value">R$ 424k</span></div>
+          <div class="top-item iungo"><span class="rank">6</span><span class="platform">🎯 IUNGO</span><span class="value">R$ 133k</span></div>
+        </div>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-header"><div class="brand-name">CRIS BARROS</div><span class="brand-position">IUNGO 9º</span></div>
+        <div class="brand-stats">
+          <div class="brand-stat"><div class="stat-label">GMV</div><div class="stat-value">R$ 8,45M</div></div>
+          <div class="brand-stat"><div class="stat-label">IUNGO</div><div class="stat-value">R$ 82k</div></div>
+          <div class="brand-stat"><div class="stat-label">Share</div><div class="stat-value">0,97%</div></div>
+        </div>
+        <div class="top-list">
+          <div class="top-item"><span class="rank">1</span><span class="platform">Facebook</span><span class="value">R$ 2,57M</span></div>
+          <div class="top-item naodef"><span class="rank">2</span><span class="platform">🔵 Não Def.</span><span class="value">R$ 2,03M</span></div>
+          <div class="top-item"><span class="rank">3</span><span class="platform">Google</span><span class="value">R$ 1,20M</span></div>
+          <div class="top-item"><span class="rank">4</span><span class="platform">Insider</span><span class="value">R$ 671k</span></div>
+          <div class="top-item"><span class="rank">5</span><span class="platform">Dito</span><span class="value">R$ 573k</span></div>
+          <div class="top-item iungo"><span class="rank">9</span><span class="platform">🎯 IUNGO</span><span class="value">R$ 82k</span></div>
+        </div>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-header"><div class="brand-name">OFF PREMIUM</div><span class="brand-position">IUNGO 9º</span></div>
+        <div class="brand-stats">
+          <div class="brand-stat"><div class="stat-label">GMV</div><div class="stat-value">R$ 7,17M</div></div>
+          <div class="brand-stat"><div class="stat-label">IUNGO</div><div class="stat-value">R$ 98k</div></div>
+          <div class="brand-stat"><div class="stat-label">Share</div><div class="stat-value">1,36%</div></div>
+        </div>
+        <div class="top-list">
+          <div class="top-item naodef"><span class="rank">1</span><span class="platform">🔵 Não Def.</span><span class="value">R$ 2,22M</span></div>
+          <div class="top-item"><span class="rank">2</span><span class="platform">Facebook</span><span class="value">R$ 1,76M</span></div>
+          <div class="top-item"><span class="rank">3</span><span class="platform">Google</span><span class="value">R$ 1,28M</span></div>
+          <div class="top-item"><span class="rank">4</span><span class="platform">Insider</span><span class="value">R$ 679k</span></div>
+          <div class="top-item"><span class="rank">5</span><span class="platform">IG</span><span class="value">R$ 249k</span></div>
+          <div class="top-item iungo"><span class="rank">9</span><span class="platform">🎯 IUNGO</span><span class="value">R$ 98k</span></div>
+        </div>
+      </div>
+
+      <div class="brand-card winner">
+        <div class="brand-card-header"><div class="brand-name">MARIA FILÓ </div><span class="brand-position">IUNGO 9º · melhor share</span></div>
+        <div class="brand-stats">
+          <div class="brand-stat"><div class="stat-label">GMV</div><div class="stat-value">R$ 4,97M</div></div>
+          <div class="brand-stat"><div class="stat-label">IUNGO</div><div class="stat-value">R$ 122k</div></div>
+          <div class="brand-stat"><div class="stat-label">Share</div><div class="stat-value" style="color:var(--accent-dark);">2,45%</div></div>
+        </div>
+        <div class="top-list">
+          <div class="top-item"><span class="rank">1</span><span class="platform">Google</span><span class="value">R$ 2,84M</span></div>
+          <div class="top-item naodef"><span class="rank">2</span><span class="platform">🔵 Não Def.</span><span class="value">R$ 2,32M</span></div>
+          <div class="top-item"><span class="rank">3</span><span class="platform">Facebook</span><span class="value">R$ 1,44M</span></div>
+          <div class="top-item"><span class="rank">4</span><span class="platform">Insider</span><span class="value">R$ 1,32M</span></div>
+          <div class="top-item"><span class="rank">5</span><span class="platform">Dito</span><span class="value">R$ 742k</span></div>
+          <div class="top-item iungo"><span class="rank">9</span><span class="platform"> IUNGO</span><span class="value">R$ 122k</span></div>
+        </div>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-card-header"><div class="brand-name">FÁBULA</div><span class="brand-position">IUNGO 9º</span></div>
+        <div class="brand-stats">
+          <div class="brand-stat"><div class="stat-label">GMV</div><div class="stat-value">R$ 1,36M</div></div>
+          <div class="brand-stat"><div class="stat-label">IUNGO</div><div class="stat-value">R$ 14k</div></div>
+          <div class="brand-stat"><div class="stat-label">Share</div><div class="stat-value">1,04%</div></div>
+        </div>
+        <div class="top-list">
+          <div class="top-item"><span class="rank">1</span><span class="platform">Google</span><span class="value">R$ 667k</span></div>
+          <div class="top-item naodef"><span class="rank">2</span><span class="platform"> Não Def.</span><span class="value">R$ 209k</span></div>
+          <div class="top-item"><span class="rank">3</span><span class="platform">Facebook</span><span class="value">R$ 155k</span></div>
+          <div class="top-item"><span class="rank">4</span><span class="platform">Dito</span><span class="value">R$ 82k</span></div>
+          <div class="top-item"><span class="rank">5</span><span class="platform">Instagram</span><span class="value">R$ 70k</span></div>
+          <div class="top-item iungo"><span class="rank">9</span><span class="platform">🎯 IUNGO</span><span class="value">R$ 14k</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TABELA -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📋 Consolidado</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Marca</th><th>GMV</th><th>IUNGO</th><th>Share</th><th>Posição</th><th>Tx. Conv.</th><th>Ticket Médio</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>FARM</strong></td><td>R$ 40,4M</td><td>R$ 413.623</td><td>1,02%</td><td>12º</td><td>1,86%</td><td>R$ 423,38</td></tr>
+          <tr><td><strong>ANIMALE</strong></td><td>R$ 10,3M</td><td>R$ 132.576</td><td>1,29%</td><td>6º</td><td>1,44%</td><td>R$ 1.352,81</td></tr>
+          <tr><td><strong>CRIS BARROS</strong></td><td>R$ 8,45M</td><td>R$ 82.290</td><td>0,97%</td><td>9º</td><td>1,79%</td><td>R$ 2.420,29</td></tr>
+          <tr><td><strong>OFF PREMIUM</strong></td><td>R$ 7,17M</td><td>R$ 97.547</td><td>1,36%</td><td>9º</td><td>2,35%</td><td>R$ 597,37</td></tr>
+          <tr><td><strong>MARIA FILÓ ⭐</strong></td><td>R$ 4,97M</td><td>R$ 121.675</td><td style="color:var(--accent-dark);font-weight:700;">2,45%</td><td>9º</td><td>1,39%</td><td>R$ 771,90</td></tr>
+          <tr><td><strong>FÁBULA</strong></td><td>R$ 1,36M</td><td>R$ 14.187</td><td>1,04%</td><td>9º</td><td>3,16%</td><td>R$ 354,66</td></tr>
+          <tr class="total-row"><td><strong>TOTAL</strong></td><td>R$ 72,67M</td><td>R$ 861.898</td><td><strong>1,19%</strong></td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="section">
+    <div class="section-header">
+      <h2>💡 Insights</h2>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-box good">
+        <div class="insight-title">✅ Destaques</div>
+        <p>
+          • <strong>MARIA FILÓ</strong> lidera com 2,45% de share (9º lugar)<br>
+          • <strong>CRIS BARROS</strong>: maior ticket IUNGO (R$ 2.420)<br>
+          • <strong>FÁBULA</strong>: maior taxa de conversão (3,16%)<br>
+          • <strong>ANIMALE</strong>: 6º lugar, melhor posição do grupo
+        </p>
+      </div>
+      <div class="insight-box warn">
+        <div class="insight-title">⚠️ Atenção</div>
+        <p>
+          • <strong>FARM</strong> = 55,6% do GMV mas IUNGO só 12º (maior gap)<br>
+          • Share geral de <strong>1,19%</strong> — meta realista: 2%+<br>
+          • <strong>"Não Def. (GA4)"</strong> é 2º canal em 5 marcas — rastreamento subestimado<br>
+          • <strong>ANIMALE</strong> (R$ 10,3M GMV) com apenas 1,29% de share
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    IUNGO Concierge · Grupo Azzas 2154 · Set/26 (01–24/09) · v3.0
+  </div>
+
+</div>
+</body>
+</html>
